@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    options.tableName = "ReviewImages";
+    
     await queryInterface.createTable("ReviewImages", {
       id: {
         allowNull: false,
@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Reviews',
-          field: 'id'
+          key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'

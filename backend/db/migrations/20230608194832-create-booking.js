@@ -3,14 +3,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const options = {
-      tableName: 'Bookings',
     };
 
     if (process.env.NODE_ENV === 'production') {
       options.schema = process.env.SCHEMA; // Define your schema in options object
     }
 
-    await queryInterface.createTable(options.tableName, {
+    await queryInterface.createTable("Bookings", {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,

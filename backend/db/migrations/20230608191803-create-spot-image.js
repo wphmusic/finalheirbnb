@@ -8,7 +8,6 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    options.tableName = "SpotImages";
     await queryInterface.createTable("SpotImages", {
       id: {
         allowNull: false,
@@ -19,7 +18,7 @@ module.exports = {
       spotId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Spots',
+          key: 'Spots',
           field: 'id'
         }
       },
