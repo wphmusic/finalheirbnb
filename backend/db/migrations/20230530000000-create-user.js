@@ -3,14 +3,14 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const options = {
-      tableName: "Users",
+      
     };
 
     if (process.env.NODE_ENV === "production") {
       options.schema = process.env.SCHEMA; // Define your schema in options object
     }
 
-    await queryInterface.createTable(options.tableName, {
+    await queryInterface.createTable("Users", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -59,6 +59,6 @@ module.exports = {
       tableName: "Users",
     };
 
-    await queryInterface.dropTable(options.tableName, options);
+    await queryInterface.dropTable("Users", options);
   },
 };
