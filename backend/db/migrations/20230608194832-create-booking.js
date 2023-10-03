@@ -51,6 +51,6 @@ module.exports = {
       tableName: 'Bookings',
     };
 
-    await queryInterface.dropTable(options.tableName);
+    await queryInterface.dropTable(options);
   },
 };
