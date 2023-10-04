@@ -47,7 +47,7 @@ router.post('/', validateSignup, async (req, res) => {
 
 
   try {
-    // Check if user exists already
+    // Check if user exists 
     const existingUserEmail = await User.findOne({ where: { email } });
     const existingUserUsername = await User.findOne({ where: { username } });
 
@@ -59,7 +59,7 @@ router.post('/', validateSignup, async (req, res) => {
       return res.status(500).json({ message: 'User already exists', errors: { username: 'User with that username already exists' } });
     }
 
-    // Hash the password before storing
+    // Hash password 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
@@ -70,7 +70,7 @@ router.post('/', validateSignup, async (req, res) => {
       hashedPassword,
     });
 
-    // Set cookie for newly registered user to log them in
+    // Set cookie for new user 
     const safeUser = { id: newUser.id, email: newUser.email, username: newUser.username };
     await setTokenCookie(res, safeUser);
 

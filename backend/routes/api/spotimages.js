@@ -4,7 +4,7 @@ const { restoreUser, requireAuth } = require('../../utils/auth');
 const { Op } = require('sequelize');
 const router = express.Router();
 
-// ROUTE TO DELETE A SPOT IMAGE
+// DELETE A SPOT IMAGE
 router.delete('/:imageId', restoreUser, requireAuth, async (req, res, next) => {
     const imageId = req.params.imageId;
 
@@ -20,7 +20,7 @@ router.delete('/:imageId', restoreUser, requireAuth, async (req, res, next) => {
 
         const spot = spotImage.spot;
 
-        // Check if the spot image belongs to the user
+        // Check if the spot image belongs to user
         if (spot.ownerId !== req.user.id) {
             return res.status(403).json({ message: "Forbidden" });
         }

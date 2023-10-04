@@ -13,17 +13,17 @@ const { Sequelize } = require('sequelize');
 const router = express.Router();
 const moment = require('moment');
 
-// Helper function to convert strings to floats if needed
+// Helper function for strings to be floats if needed
 function parseFloatIfNeeded(value) {
   return typeof value === 'string' ? parseFloat(value) : value;
 }
 
-// Helper function to format dates using moment.js
+// Helper function to format dates w/ moment.js
 function formatDate(date) {
   return moment(date).format('YYYY-MM-DD HH:mm:ss');
 }
 
-// ROUTE TO ADD AN IMAGE TO A SPOT BASED ON THE SPOT ID
+// ADD AN IMAGE TO A SPOT BASED ON THE SPOT ID
 router.post('/:spotId/images', restoreUser, requireAuth, async (req, res) => {
   const { url, preview } = req.body;
   const spotId = req.params.spotId;
@@ -53,7 +53,7 @@ router.post('/:spotId/images', restoreUser, requireAuth, async (req, res) => {
 
   const newImage = await SpotImage.create({ spotId, url, preview });
 
-  // Convert the Sequelize instance to plain JavaScript object
+  // Convert the Sequelize to POJO
   let newImageDataValues = newImage.toJSON();
 
   // Remove unnecessary properties
@@ -65,7 +65,7 @@ router.post('/:spotId/images', restoreUser, requireAuth, async (req, res) => {
   res.json(newImageDataValues);
 });
 
-// ROUTE TO CREATE A REVIEW FOR A SPOT BASED ON THE SPOT ID
+// CREATE A REVIEW FOR A SPOT BASED ON THE SPOT ID
 router.post('/:spotId/reviews', restoreUser, requireAuth, async (req, res, next) => {
   try {
     const spotId = parseInt(req.params.spotId, 10);
@@ -139,7 +139,7 @@ router.post('/:spotId/reviews', restoreUser, requireAuth, async (req, res, next)
   }
 });
 
-// ROUTE TO GET ALL SPOTS OWNED BY THE CURRENT USER
+// GET ALL SPOTS OWNED BY THE CURRENT USER
 router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
   const userId = req.user.id;
 
@@ -196,7 +196,7 @@ router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
   res.status(200).json({ Spots: updatedSpots });
 });
 
-// ROUTE TO DELETE A SPOT
+// DELETE A SPOT
 router.delete('/:spotId', restoreUser, requireAuth, async (req, res, next) => {
   const spotId = req.params.spotId;
 
@@ -221,7 +221,7 @@ router.delete('/:spotId', restoreUser, requireAuth, async (req, res, next) => {
   return res.status(200).json({ message: 'Successfully deleted' });
 });
 
-// ROUTE TO UPDATE AN EXISTING SPOT
+// UPDATE AN EXISTING SPOT
 router.put('/:spotId', restoreUser, requireAuth, async (req, res) => {
   const spotId = req.params.spotId;
   const userId = req.user.id;
@@ -358,7 +358,7 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
   res.status(200).json(booking);
 });
 
-// ROUTE TO CREATE A NEW SPOT
+// CREATE A NEW SPOT
 router.post('/', restoreUser, requireAuth, async (req, res) => {
   const { address, city, state, country, lat, lng, name, description, price } =
     req.body;
@@ -414,7 +414,7 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
   res.json(spotData);
 });
 
-// ROUTE FOR GETTING ALL REVIEWS BY A SPOT'S ID
+// GETTING ALL REVIEWS BY A SPOT'S ID
 router.get('/:spotId/reviews', restoreUser, async (req, res, next) => {
   const spotId = req.params.spotId;
 
@@ -459,7 +459,7 @@ router.get('/:spotId/reviews', restoreUser, async (req, res, next) => {
   res.json({ Reviews: reviews });
 });
 
-// ROUTE TO GET ALL BOOKINGS FOR A SPOT BASED ON THE SPOT'S ID
+// GET ALL BOOKINGS FOR A SPOT BASED ON THE SPOT'S ID
 router.get('/:spotId/bookings', restoreUser, requireAuth, async (req, res, next) => {
   const spotId = req.params.spotId;
 
@@ -504,7 +504,7 @@ router.get('/:spotId/bookings', restoreUser, requireAuth, async (req, res, next)
   res.json({ Bookings: transformedBookings });
 });
 
-// ROUTE TO GET DETAILS OF A SPOT FROM AN ID
+// GET DETAILS OF A SPOT FROM AN ID
 router.get('/:spotId', async (req, res) => {
   const spotId = req.params.spotId;
 
@@ -580,7 +580,7 @@ router.get('/:spotId', async (req, res) => {
   }
 });
 
-// ROUTE TO ADD QUERY FILTERS AND TO GET ALL SPOTS
+// ADD QUERY FILTERS AND TO GET ALL SPOTS
 router.get('/', restoreUser, async (req, res) => {
   let page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice;
   const errors = {};

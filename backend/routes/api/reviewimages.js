@@ -26,12 +26,12 @@ router.param('imageId', async (req, res, next, imageId) => {
 router.delete('/:imageId', restoreUser, requireAuth, async (req, res) => {
     const image = req.image;
 
-    // Check if the review image belongs to the user
+    // Check if the review image belongs to a user
     if (image.review.userId !== req.user.id) {
         return res.status(403).json({ message: "Forbidden" });
     }
 
-    // Delete the image
+    // Delete image
     await image.destroy();
 
     return res.status(200).json({ message: "Successfully deleted" });
