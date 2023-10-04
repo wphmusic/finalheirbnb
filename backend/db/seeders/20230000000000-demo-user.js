@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 
 const userData = [
   {
-    firstName: 'Bro',
-    lastName: 'Dude',
+    firstName: 'Will',
+    lastName: 'Herrington',
     email: 'demo@user.io',
     username: 'Demo-lition',
     hashedPassword: bcrypt.hashSync('password'),
@@ -21,7 +21,7 @@ const userData = [
     updatedAt: new Date(),
   },
   {
-    firstName: 'Will',
+    firstName: 'Not Will',
     lastName: 'Herrington',
     email: 'user2@user.io',
     username: 'FakeUser2',

@@ -12,22 +12,22 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
     {
       spotId: 1,
-      url: 'http://placekitten.com/200/300',
+      url: 'http://placekitten.com/200/911',
       preview: true
     },
     {
       spotId: 1,
-      url: 'https://www.google.com/',
+      url: 'http://placekitten.com/200/911',
       preview: false
     },
     {
       spotId: 2,
-      url: 'http://placekitten.com/200/300',
+      url: 'http://placekitten.com/200/911',
       preview: true
     },
     {
       spotId: 3,
-      url: 'https://www.twitter.com/',
+      url: 'http://placekitten.com/200/911',
       preview: true
     }
   ], {});

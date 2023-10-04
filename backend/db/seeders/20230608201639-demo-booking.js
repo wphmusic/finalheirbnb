@@ -58,20 +58,20 @@ module.exports = {
       {
         spotId: 1,
         userId: 1,
-        startDate: '2023-06-01',
-        endDate: '2023-06-07',
+        startDate: '2023-08-01',
+        endDate: '2023-08-07',
       },
       {
         spotId: 2,
         userId: 2,
-        startDate: '2023-06-10',
-        endDate: '2023-06-15',
+        startDate: '2023-08-10',
+        endDate: '2023-08-15',
       },
       {
         spotId: 3,
         userId: 1,
-        startDate: '2023-07-01',
-        endDate: '2023-07-10',
+        startDate: '2023-08-01',
+        endDate: '2023-08-10',
       }
     ], {});
   },

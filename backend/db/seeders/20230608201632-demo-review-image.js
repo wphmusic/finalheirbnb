@@ -4,7 +4,7 @@
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA;  
 }
 
 
@@ -15,19 +15,19 @@ module.exports = {
     return queryInterface.bulkInsert(options, [
       {
         reviewId: 1,
-        url: 'http://placekitten.com/200/300'
+        url: 'http://placekitten.com/200/911'
       },
       {
         reviewId: 2,
-        url: 'http://placekitten.com/200/300'
+        url: 'http://placekitten.com/200/911'
       },
       {
         reviewId: 3,
-        url: 'http://placekitten.com/200/300'
+        url: 'http://placekitten.com/200/911'
       },
       {
         reviewId: 4,
-        url: 'http://placekitten.com/200/300'
+        url: 'http://placekitten.com/200/911'
       }
     ], {});
   },

@@ -14,7 +14,7 @@ module.exports = {
       {
         userId: 1,
         spotId: 1,
-        review: 'This spot is amazing!',
+        review: 'Great',
         stars: 5,
       },
       {
