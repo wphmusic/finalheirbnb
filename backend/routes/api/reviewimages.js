@@ -3,7 +3,7 @@ const router = express.Router();
 const { Review, ReviewImage } = require('../../db/models');
 const { restoreUser, requireAuth } = require('../../utils/auth');
 
-// Middleware to load the image by ID
+
 router.param('imageId', async (req, res, next, imageId) => {
     try {
         const image = await ReviewImage.findOne({
@@ -38,4 +38,3 @@ router.delete('/:imageId', restoreUser, requireAuth, async (req, res) => {
 });
 
 module.exports = router;
-

@@ -4,10 +4,10 @@ const { Booking, Spot, User } = require('../../db/models');
 const { restoreUser, requireAuth } = require('../../utils/auth');
 const { Op } = require('sequelize');
 
-// Helper function to convert strings to numbers
+
 const parseNumber = (str) => parseFloat(str);
 
-// Helper function to remove unnecessary properties from Spot
+
 const cleanSpot = (spot) => {
   if (spot) {
     delete spot.createdAt;
@@ -21,7 +21,7 @@ const cleanSpot = (spot) => {
   return spot;
 };
 
-// ROUTE TO GET ALL OF THE CURRENT USERS BOOKINGS
+// GET ALL OF THE CURRENT USERS BOOKINGS
 router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
   const userId = req.user.id;
 
@@ -45,7 +45,7 @@ router.get('/current', restoreUser, requireAuth, async (req, res, next) => {
   }
 });
 
-// CREATE A BOOKING FROM A SPOT BASED ON THE SPOT'S ID
+// CREATE A BOOKING FROM A SPOT BASED ON SPOT'S ID
 router.post('/spot/:spotId', restoreUser, requireAuth, async (req, res, next) => {
   const spotId = req.params.spotId;
   const userId = req.user.id;
@@ -108,7 +108,7 @@ router.post('/spot/:spotId', restoreUser, requireAuth, async (req, res, next) =>
   }
 });
 
-// ROUTE FOR EDITING A BOOKING
+// EDITING A BOOKING
 router.put('/:bookingId', restoreUser, requireAuth, async (req, res, next) => {
   const bookingId = req.params.bookingId;
   const userId = req.user.id;
@@ -184,7 +184,7 @@ router.put('/:bookingId', restoreUser, requireAuth, async (req, res, next) => {
   }
 });
 
-// ROUTE TO DELETE A BOOKING
+// DELETE A BOOKING
 router.delete('/:bookingId', restoreUser, requireAuth, async (req, res, next) => {
   const bookingId = req.params.bookingId;
 
@@ -220,4 +220,3 @@ router.delete('/:bookingId', restoreUser, requireAuth, async (req, res, next) =>
 });
 
 module.exports = router;
-
