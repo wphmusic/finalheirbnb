@@ -34,10 +34,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           len: [2, 60],
-          is: ["^[a-z]+$",'i'], //only allows letters
+          is: ["^[a-z]+$",'i'], //letters only
           notEmpty: {
             args: true,
-            msg: 'First Name cannot be empty or contain only whitespace'
+            msg: 'First Name cannot be empty'
           }
         }
       },
@@ -46,10 +46,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           len: [2, 60],
-          is: ["^[a-z]+$",'i'], //only allows letters
+          is: ["^[a-z]+$",'i'], //letters only
           notEmpty: {
             args: true,
-            msg: 'Last Name cannot be empty or contain only whitespace'
+            msg: 'Last Name cannot be empty'
           }
         }
       },
