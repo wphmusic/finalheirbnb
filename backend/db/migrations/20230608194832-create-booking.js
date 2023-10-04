@@ -6,7 +6,7 @@ module.exports = {
     };
 
     if (process.env.NODE_ENV === 'production') {
-      options.schema = process.env.SCHEMA; // Define your schema in options object
+      options.schema = process.env.SCHEMA;
     }
 
     await queryInterface.createTable("Bookings", {

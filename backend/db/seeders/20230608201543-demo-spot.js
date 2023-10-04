@@ -2,7 +2,7 @@
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA;  
 }
 
 /** @type {import('sequelize-cli').Migration} */
@@ -18,10 +18,10 @@ module.exports = {
         country: 'Confusionland',
         lat: 37.12345,
         lng: -122.67890,
-        name: '',
+        name: 'Confusing place',
         description: 'Do not come',
         price: 150.0,
-        previewImage: 'https://www.google.com/'
+        previewImage: 'https://placekitten.com/200/911'
       },
       {
         ownerId: 2,
@@ -31,10 +31,10 @@ module.exports = {
         country: 'Drunkland',
         lat: 38.54321,
         lng: -121.98765,
-        name: 'Spot 2',
+        name: 'Weird Place',
         description: 'Do not come seriously',
         price: 150.0,
-        previewImage: 'https://www.yahoo.com'
+        previewImage: 'https://placekitten.com/200/911'
       },
       {
         ownerId: 1,
@@ -44,10 +44,10 @@ module.exports = {
         country: 'Happyland',
         lat: 39.87654,
         lng: -120.34567,
-        name: 'Spot 3',
+        name: 'Happy Place',
         description: 'I said do not come',
         price: 150.0,
-        previewImage: 'https://www.twitter.com/'
+        previewImage: 'https://placekitten.com/200/911'
       }
     ], {});
   },
