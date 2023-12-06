@@ -347,7 +347,6 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
       },
     });
   }
-//test
   const booking = await Booking.create({
     spotId,
     userId,
