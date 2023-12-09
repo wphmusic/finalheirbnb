@@ -28,7 +28,7 @@ router.get('/current', restoreUser, async (req, res) => {
   const userId = req.userId;
 
   try {
-    const user = await User.findOne(userId);
+    const user = await User.findByPk(userId);
     const safeUser = user
       ? { id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, username: user.username }
       : null;
@@ -48,8 +48,8 @@ router.post('/', validateSignup, async (req, res) => {
 
   try {
     // Check if user exists 
-    const existingUserEmail = await User.findOne({ where: { email } });
-    const existingUserUsername = await User.findOne({ where: { username } });
+    const existingUserEmail = await User.findByPk({ where: { email } });
+    const existingUserUsername = await User.findByPk({ where: { username } });
 
     if (existingUserEmail) {
       return res.status(500).json({ message: 'User already exists', errors: { email: 'User with that email already exists' } });

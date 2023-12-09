@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     options.tableName = "SpotImages";
-    return queryInterface.bulkInsert(options, [
+    return queryInterface(options, [
     {
       spotId: 1,
       url: 'http://placekitten.com/200/911',
@@ -33,8 +33,5 @@ module.exports = {
   ], {});
   },
 
-  down: async (queryInterface, Sequelize) => {
-    options.tableName = "SpotImages";
-    return queryInterface.bulkDelete(options, null, {});
-  }
+  
 };
